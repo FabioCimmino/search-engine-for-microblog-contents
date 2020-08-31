@@ -1,6 +1,6 @@
 # ReadMe
 
-The goal of this project is to develop a personalized search engine for microblog contents.Twitter was chosen as the microblog with the related tweets contained therein.
+The goal of this project is to develop a personalized search engine for microblog contents. Twitter was chosen as the microblog with the related tweets contained therein. for more details please read the pdf "Report"
 
 
 
