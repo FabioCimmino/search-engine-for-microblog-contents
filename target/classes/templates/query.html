@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Search Engine</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css?family=Open+Sans:300,400,700,800');
+        body{
+            padding: 0;
+            margin: 0;
+            font-family: "Open Sans";
+        }
+        h1{
+            text-align: center;
+            font-size: 60px;
+            padding: 20px;
+            font-weight: 400;
+            letter-spacing: 1px;
+        }
+
+        input[type=text] {
+            padding: 12px 20px;
+            margin: 9px 0;
+            box-sizing: border-box;
+            border-radius: 10px;
+            outline: none;
+            width: 40%;
+            height:20%;
+
+        }
+
+
+        button{
+            height: 50px;
+            padding: 0;
+            margin: 0;
+
+        }
+
+        .btn{
+            border-radius: 30px;
+            width: 14%;
+            margin-left: 5px;
+            font-size: 20px;
+
+        }
+
+        form {
+            display: inline;
+        }
+    </style>
+</head>
+<body>
+<section class="bg-primary text-center p-5 mt-4">
+    <div class="container p-3">
+        <h1 class="text-white">Twitter Search</h1>
+        <form action="#" th:action="@{/query}" th:object="${query}" method="post">
+            <input type="text" th:field="*{queryString}" placeholder="Enter your query">
+    <button type="submit" class="btn btn-default"> Search <i class="fa fa-search"></i></button>
+         
+        </form>
+  
+             <form action="#" th:action="@{/queryAdvanced}" th:object="${query}" method="post">
+            <button type="submit" class="btn btn-default"> Option <i class="fa fa-cog fa-fw" aria-hidden="true"></i></button>
+        </form>
+    </div>   
+   
+    
+</section>
+</body>
+</html>

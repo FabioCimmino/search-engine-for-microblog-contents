@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Search Personalized</title>
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css?family=Open+Sans:300,400,700,800');
+        body{
+            padding: 0;
+            margin: 0;
+            font-family: "Open Sans";
+        }
+        h1{
+            text-align: center;
+            font-size: 60px;
+            padding: 20px;
+            font-weight: 400;
+            letter-spacing: 1px;
+        }
+
+        input[type=text] {
+            padding: 12px 20px;
+            margin: 9px 0;
+            box-sizing: border-box;
+            border-radius: 10px;
+            outline: none;
+            width: 40%;
+            height:20%;
+
+        }
+
+
+        button{
+            height: 50px;
+            padding: 0;
+            margin: 0;
+
+        }
+
+        .btn{
+            border-radius: 30px;
+            width: 14%;
+            margin-left: 5px;
+            font-size: 20px;
+
+        }
+
+    </style>
+    
+    <script type="text/javascript">
+
+    $(document).ready(function() {
+        $("#user").change(function(){
+
+                $("#category").prop('disabled', false);
+                if ($("#user").val()=="none")
+                    $("#category").prop('disabled', true);
+            }
+        );
+    });
+
+
+</script>
+</head>
+<body>
+<section class="bg-primary text-center p-5 mt-4">
+    <div class="container p-3">
+        <h1 class="text-white">Twitter Search</h1>
+        <form action="#" th:action="@{/queryPersonalized}" th:object="${query}" method="post">
+            <p>
+                <input type="text" th:field="*{queryString}" placeholder="Enter your query">
+                <button type="submit" class="btn btn-default"> Search <i class="fa fa-search"></i></button>
+            </p>
+		
+			<div class="form-inline" style="margin-left: 30%;">
+
+            
+            
+            <table>
+            <tr>
+                <th><span style="color: white; ">User</span></th>
+                <th><span style="color: white; ">Category</span></th>
+                <th><span style="color: white; ">Relevance</span></th>
+                <th><span style="color: white; ">Query</span></th>
+             </tr>
+             <tr>
+             <td>
+                <select id="user" th:field="*{user}" class="form-control" style="width: fit-content">
+                	<option th:value="'none'" th:text="none"></option>
+                    <option th:value="'us1'" th:text="user1"></option>
+                    <option th:value="'us2'" th:text="user2"></option>
+                    <option th:value="'us3'" th:text="user3"></option>
+                    <option th:value="'us4'" th:text="user4"></option>
+                    <option th:value="'us5'" th:text="user5"></option>
+                    <option th:value="'us6'" th:text="user6"></option>
+                    <option th:value="'us7'" th:text="user7"></option>
+                    <option th:value="'us8'" th:text="user8"></option>
+                    <option th:value="'us9'" th:text="user9"></option>
+                    <option th:value="'us10'" th:text="user10"></option>
+                </select>
+     </td> <td>
+                <select disabled id="category" th:field="*{category}" class="form-control" style="width:fit-content">
+                	<option th:value="'none'" th:text="none"></option>
+                    <option th:value="'cinema'" th:text="cinema"></option>
+                    <option th:value="'sport'" th:text="sport"></option>
+                    <option th:value="'science'" th:text="science"></option>
+                    <option th:value="'news'" th:text="news"></option>
+                    <option th:value="'music'" th:text="music"></option>
+                </select>
+			</td> <td>
+                <select th:field="*{relevance}" class="form-control" style="width:fit-content">
+                	<option th:value="'none'" th:text="none"></option>
+                    <option th:value="'retweet'" th:text="retweet"></option>
+                    <option th:value="'likes'" th:text="likes"></option>
+                </select>
+			</td>
+                 <td>
+                     <select th:field="*{expansion}" class="form-control" style="width:fit-content">
+                         <option th:value="'none'" th:text="none"></option>
+                         <option th:value="'rochio'" th:text="rochio"></option>
+                         <option th:value="'association'" th:text="association"></option>
+                         <option th:value="'metric'" th:text="metric"></option>
+                         <option th:value="'scalar'" th:text="scalar"></option>
+                     </select>
+                 </td>
+			</tr>
+				</table>
+
+			</div>
+        </form>
+    </div>
+
+</section>
+</body>
+</html>
